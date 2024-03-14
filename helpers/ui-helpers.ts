@@ -1,6 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
-export class GenericPage {
+export class HelpersUi {
     readonly page: Page;
     /**
     * Constructs a generic page object.

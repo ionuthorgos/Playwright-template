@@ -8,13 +8,13 @@ test.describe('Tests with isolated browser contexts', () => {
     }
   });
   
-  test('Search for a career', async ({ mainPage, genericPage }) => {
-    await genericPage.goto();
-    await genericPage.selectElement(mainPage.acceptAllCookies)
+  test('Search for a career', async ({ mainPage, helpersUi }) => {
+    await helpersUi.goto();
+    await helpersUi.selectElement(mainPage.acceptAllCookies)
     await mainPage.hoverOver(mainPage.careersButton)
     await mainPage.checkSubMenuVisibility()
-    await genericPage.elementContainText(mainPage.subMenuTitleFromCareers,"Work with us")
-    await genericPage.selectElement(mainPage.searchCareersButton)
+    await helpersUi.elementContainText(mainPage.subMenuTitleFromCareers,"Work with us")
+    await helpersUi.selectElement(mainPage.searchCareersButton)
   });
 
 })
