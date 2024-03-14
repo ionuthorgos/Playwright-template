@@ -1,11 +1,15 @@
 import { test as base } from '@playwright/test';
 import { PlaywrightPage } from '../pages/playwright-dev-page';
 import { SettingsPage } from '../pages/settings-page';
+import { MainPage } from '../pages/main-page';
+import { GenericPage } from '../pages/generic-page';
 
-// Declare the types of your fixtures.
+// Define custom fixture types for the test context.
 type MyFixtures = {
     playwrightPage: PlaywrightPage;
     settingsPage: SettingsPage;
+    mainPage: MainPage;
+    genericPage: GenericPage;
 }
 
 // Extend base test by providing "playwrightPage" and "settingsPage"
@@ -13,16 +17,25 @@ type MyFixtures = {
 
 export const test = base.extend<MyFixtures>({
     playwrightPage: async ({ page }, use) => {
-        // Set up the fixture.
+       // Instantiate PlaywrightPage with the current page context and pass it to the test.
         const playwrightPage = new PlaywrightPage(page);
-        // Use the fixture value in the test
         await use(playwrightPage)
     },
 
     settingsPage: async ({ page }, use) => {
+        // Instantiate SettingsPage with the current page context and pass it to the test.
         await use(new SettingsPage(page));
     },
 
+    mainPage: async ({ page }, use) => {
+        // Instantiate MainPage with the current page context and pass it to the test.
+        await use(new MainPage(page));
+    },
+    
+    genericPage: async ({ page }, use) => {
+        // Instantiate GenericPage with the current page context and pass it to the test.
+        await use(new GenericPage(page));
+    },
 
 })
 
