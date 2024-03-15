@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:ui": "npx playwright test --ui",
+    "test:start": "npx playwright test careers.spec.ts --headed"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -12,6 +15,7 @@
     "@types/debug": "^4.1.12",
     "@types/node": "^20.11.20"
   },
+
   "dependencies": {
     "debug": "^4.3.4"
   }

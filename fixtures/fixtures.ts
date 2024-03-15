@@ -14,10 +14,9 @@ type MyFixtures = {
 
 // Extend base test by providing "playwrightPage" and "settingsPage"
 // This new "test" can be used in multiple test files and each of them will get the fixtures
-
 export const test = base.extend<MyFixtures>({
     playwrightPage: async ({ page }, use) => {
-       // Instantiate PlaywrightPage with the current page context and pass it to the test.
+        // Instantiate PlaywrightPage with the current page context and pass it to the test.
         const playwrightPage = new PlaywrightPage(page);
         await use(playwrightPage)
     },
@@ -31,7 +30,7 @@ export const test = base.extend<MyFixtures>({
         // Instantiate MainPage with the current page context and pass it to the test.
         await use(new MainPage(page));
     },
-    
+
     helpersUi: async ({ page }, use) => {
         // Instantiate GenericPage with the current page context and pass it to the test.
         await use(new HelpersUi(page));
