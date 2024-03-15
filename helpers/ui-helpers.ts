@@ -2,13 +2,15 @@ import { expect, type Locator, type Page } from '@playwright/test';
 
 export class HelpersUi {
     readonly page: Page;
+
     /**
     * Constructs a generic page object.
     * @param page The Playwright Page object.
     */
-    constructor(page: Page) {
+    constructor(page: Page,) {
         this.page = page;
     }
+
     /**
      * Navigates to the root URL of the configured site.
      */

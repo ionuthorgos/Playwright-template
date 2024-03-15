@@ -1,7 +1,7 @@
 import { test as base } from '@playwright/test';
-import { PlaywrightPage } from '../pages/playwright-dev-page';
-import { SettingsPage } from '../pages/settings-page';
-import { MainPage } from '../pages/main-page';
+import { PlaywrightPage } from '../pages/playwrightExample/playwright-dev-page';
+import { SettingsPage } from '../pages/playwrightExample/settings-page';
+import { MainPage } from '../pages/nielseniqPages/main-page';
 import { HelpersUi } from '../helpers/ui-helpers';
 
 // Define custom fixture types for the test context.
