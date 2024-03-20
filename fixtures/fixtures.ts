@@ -35,7 +35,6 @@ export const test = base.extend<MyFixtures>({
         // Instantiate GenericPage with the current page context and pass it to the test.
         await use(new HelpersUi(page));
     },
-
 })
 
 export { expect } from '@playwright/test';

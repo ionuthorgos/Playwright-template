@@ -23,6 +23,7 @@ export class HelpersUi {
      * @param element The locator of the element to click on.
      */
     async selectElement(element: Locator) {
+        // await to be visible?
         await element.click();
     }
 

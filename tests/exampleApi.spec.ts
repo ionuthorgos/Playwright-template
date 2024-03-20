@@ -9,7 +9,7 @@ test.describe('API tests', () => {
     apiHelpers = new ApiHelpers(apiContext);
   });
 
-  test('GET request to retrieve posts', async () => {
+  test('GET users', async () => {
     const response = await apiHelpers.makeRequest('GET', 'http://localhost:3000/users');
     expect(response.status()).toBe(200);
     const posts = await response.json();

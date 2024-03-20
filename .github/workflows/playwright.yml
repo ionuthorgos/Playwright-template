@@ -13,8 +13,14 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: 18
+
     - name: Install dependencies
       run: npm ci
+
+    - name: Start Express server
+      run: npm start &
+      working-directory: ./myapp
+      
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run Playwright tests

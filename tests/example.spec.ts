@@ -1,6 +1,6 @@
 import { test, expect} from '../fixtures/fixtures';
 
-test.describe('Tests with isolated browser contexts', () => {
+test.describe('Tests example from playwright', () => {
   test.afterEach(async ({ page }, testInfo) => {
     // If the test fails, take a screenshot.
     if (testInfo.status === 'failed') {

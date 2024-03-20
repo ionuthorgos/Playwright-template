@@ -22,5 +22,4 @@ test.describe('Tests with isolated browser contexts', () => {
     // Select the button to search for careers.
     await helpersUi.selectElement(mainPage.searchCareersButton)
   });
-
 })
