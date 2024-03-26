@@ -16,21 +16,21 @@ test.describe('Tests with isolated browser contexts', () => {
     // Hover over the careers button to reveal any potential sub-menus.
     await utilityFunctions.hoverOver(mainPage.careersButton)
     // Verify that the sub-menu related to careers is visible after the hover action.
-    await utilityFunctions.verifyElement(mainPage.subMenuIsActive, 'toBeVisible')
+    await utilityFunctions.verifyElementContidition(mainPage.subMenuIsActive, 'toBeVisible')
     // Assert that the sub-menu title contains the expected text "Work with us".
-    await utilityFunctions.verifyElement(mainPage.subMenuTitleFromCareers, 'elementContainsText', 'Work with us')
+    await utilityFunctions.verifyElementContidition(mainPage.subMenuTitleFromCareers, 'elementContainsText', 'Work with us')
     // Select the button to search for careers.
     await utilityFunctions.selectElement(mainPage.searchCareersButton)
 
     // Verify that the you are redirected on the Careers page
-    await utilityFunctions.verifyElement(careersPage.title, 'toBeVisible')
-    await utilityFunctions.verifyElement(careersPage.title, 'elementContainsText', 'Careers')
+    await utilityFunctions.verifyElementContidition(careersPage.title, 'toBeVisible')
+    await utilityFunctions.verifyElementContidition(careersPage.title, 'elementContainsText', 'Careers')
 
     // Fill in the search input 
     await utilityFunctions.selectElement(careersPage.searchButton)
     await utilityFunctions.fillInputField(careersPage.searchButton,'QA Engineer')
     await careersPage.selectRandomOptionFromDropdown()
-
+    
     await utilityFunctions.selectElement(careersPage.jobTeamsDropDown)
 
 

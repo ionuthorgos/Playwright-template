@@ -14,7 +14,6 @@ type MyFixtures = {
     careersPage: CareersPage;
 }
 
-// Extend base test by providing "playwrightPage" and "settingsPage"
 // This new "test" can be used in multiple test files and each of them will get the fixtures
 export const test = base.extend<MyFixtures>({
     playwrightPage: async ({ page }, use) => {

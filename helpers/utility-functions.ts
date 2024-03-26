@@ -2,7 +2,6 @@ import { expect, type Locator, type Page } from '@playwright/test';
 
 export class UtilityFunctions {
     readonly page: Page;
-
     /**
     * Constructs a generic page object.
     * @param page The Playwright Page object.
@@ -10,14 +9,12 @@ export class UtilityFunctions {
     constructor(page: Page,) {
         this.page = page;
     }
-
     /**
      * Navigates to the root URL of the configured site.
      */
     async goto() {
         await this.page.goto('/');
     }
-
     /**
      * Clicks on the specified element.
      * @param element The locator of the element to click on.
@@ -26,11 +23,11 @@ export class UtilityFunctions {
         if (await element.isVisible() && await element.isEnabled()) {
             await element.click();
         } else {
-            throw new Error(`Element ${element} is not visible or not enabled`)
+            throw new Error(`${element} is not visible or not enabled`)
         }
     }
 
-    async verifyElement(element: Locator, check: string, ...args: any[]) {
+    async verifyElementContidition(element: Locator, check: string, ...args: any[]) {
         switch (check) {
             /** Asserts that the specified element is visible.*/
             case 'elementToBeVisible':
@@ -62,7 +59,7 @@ export class UtilityFunctions {
         if (await element.isVisible() && await element.isEnabled()) {
             await element.hover();
         } else {
-            throw new Error('Element is not visible or not enabled')
+            throw new Error(`${element} is not visible or not enabled`)
         }
     }
 
@@ -70,7 +67,7 @@ export class UtilityFunctions {
         if (await element.isVisible() && await element.isEnabled()) {
             await element.fill(text);
         } else {
-            throw new Error('Element is not visible and cannot be fill')
+            throw new Error(`${element} is not visible and cannot be fill`)
         }
     }
 
