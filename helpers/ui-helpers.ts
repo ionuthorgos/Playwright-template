@@ -23,17 +23,34 @@ export class HelpersUi {
      * @param element The locator of the element to click on.
      */
     async selectElement(element: Locator) {
-        // await to be visible?
-        await element.click();
+        if (await element.isVisible() && await element.isEnabled()) {
+            await element.click();
+        } else {
+            throw new Error('Element is not visible or not enabled')
+        }
     }
 
-    /**
-     * Asserts that the specified element contains the given text.
-     * @param element The locator of the element.
-     * @param text The expected text content to validate.
-     */
-    async elementContainText(element: Locator, text: string) {
-        await expect(element).toContainText(text)
-    }
+    async verifyElement(element: Locator, check: string, ...args: any[]) {
+        switch (check) {
+            /** Asserts that the specified element is visible.*/
+            case 'elementToBeVisible':
+                await expect(element).toBeVisible();
+                break;
 
-} 
+            /** Asserts that the specified element contains the given text.*/
+            case 'elementContainsText':
+                const [expectedText] = args
+                if (typeof expectedText !== 'string') {
+                    throw new Error('Expected text must be provided for toContainText check.');
+                }
+                await expect(element).toContainText(expectedText)
+                break;
+
+            /** Asserts that the specified element is hidden.*/
+            case 'elementIsHidden':
+                await expect(element).toBeHidden();
+                break;
+            default:
+        }
+    }
+}

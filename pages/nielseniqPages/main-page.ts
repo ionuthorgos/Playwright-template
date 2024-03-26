@@ -6,6 +6,7 @@ export class MainPage {
   readonly acceptAllCookies: Locator
   readonly searchCareersButton: Locator
   readonly subMenuTitleFromCareers: Locator
+  readonly subMenuIsActive: Locator
 
   constructor(page: Page) {
     this.page = page;
@@ -13,6 +14,7 @@ export class MainPage {
     this.acceptAllCookies = page.locator('button[id=onetrust-accept-btn-handler]')
     this.searchCareersButton = page.locator('role=link[name="Search Careers"]')
     this.subMenuTitleFromCareers = page.locator('role=link[name="Work with us"]')
+    this.subMenuIsActive = page.locator('ul li[class*="sub-active"]')
   }
 
   /**
@@ -20,14 +22,10 @@ export class MainPage {
  * @param element The locator of the menu element to hover over.
  */
   async hoverOver(element: Locator) {
-    await element.hover();
-  }
-
-  /**
- * Checks if the sub-menu is visible after hovering over a menu item.
- * Assumes the sub-menu has 'sub-active' class when active.
- */
-  async checkSubMenuVisibility() {
-    await expect(this.page.locator('ul li[class*="sub-active"]')).toBeVisible();
+    if (await element.isVisible() && await element.isEnabled()) {
+      await element.hover();
+    } else {
+      throw new Error('Element is not visible or not enabled')
+    }
   }
 } 

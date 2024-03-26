@@ -16,9 +16,9 @@ test.describe('Tests with isolated browser contexts', () => {
     // Hover over the careers button to reveal any potential sub-menus.
     await mainPage.hoverOver(mainPage.careersButton)
     // Verify that the sub-menu related to careers is visible after the hover action.
-    await mainPage.checkSubMenuVisibility()
+    await helpersUi.verifyElement(mainPage.subMenuIsActive,'toBeVisible')
     // Assert that the sub-menu title contains the expected text "Work with us".
-    await helpersUi.elementContainText(mainPage.subMenuTitleFromCareers,"Work with us")
+    await helpersUi.verifyElement(mainPage.subMenuTitleFromCareers,'elementContainsText', 'Work with us')
     // Select the button to search for careers.
     await helpersUi.selectElement(mainPage.searchCareersButton)
   });
