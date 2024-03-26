@@ -17,15 +17,5 @@ export class MainPage {
     this.subMenuIsActive = page.locator('ul li[class*="sub-active"]')
   }
 
-  /**
- * Hovers over the given menu element.
- * @param element The locator of the menu element to hover over.
- */
-  async hoverOver(element: Locator) {
-    if (await element.isVisible() && await element.isEnabled()) {
-      await element.hover();
-    } else {
-      throw new Error('Element is not visible or not enabled')
-    }
-  }
-} 
+
+}

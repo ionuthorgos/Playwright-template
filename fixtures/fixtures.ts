@@ -2,14 +2,14 @@ import { test as base } from '@playwright/test';
 import { PlaywrightPage } from '../pages/playwrightExample/playwright-dev-page';
 import { SettingsPage } from '../pages/playwrightExample/settings-page';
 import { MainPage } from '../pages/nielseniqPages/main-page';
-import { HelpersUi } from '../helpers/ui-helpers';
+import { UtilityFunctions } from '../helpers/utility-functions';
 
 // Define custom fixture types for the test context.
 type MyFixtures = {
     playwrightPage: PlaywrightPage;
     settingsPage: SettingsPage;
     mainPage: MainPage;
-    helpersUi: HelpersUi;
+    utilityFunctions: UtilityFunctions;
 }
 
 // Extend base test by providing "playwrightPage" and "settingsPage"
@@ -31,9 +31,9 @@ export const test = base.extend<MyFixtures>({
         await use(new MainPage(page));
     },
 
-    helpersUi: async ({ page }, use) => {
+    utilityFunctions: async ({ page }, use) => {
         // Instantiate GenericPage with the current page context and pass it to the test.
-        await use(new HelpersUi(page));
+        await use(new UtilityFunctions(page));
     },
 })
 

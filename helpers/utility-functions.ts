@@ -1,6 +1,6 @@
 import { expect, type Locator, type Page } from '@playwright/test';
 
-export class HelpersUi {
+export class UtilityFunctions {
     readonly page: Page;
 
     /**
@@ -51,6 +51,18 @@ export class HelpersUi {
                 await expect(element).toBeHidden();
                 break;
             default:
+        }
+    }
+
+    /**
+* Hovers over the given menu element.
+* @param element The locator of the menu element to hover over.
+*/
+    async hoverOver(element: Locator) {
+        if (await element.isVisible() && await element.isEnabled()) {
+            await element.hover();
+        } else {
+            throw new Error('Element is not visible or not enabled')
         }
     }
 }
