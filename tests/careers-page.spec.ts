@@ -8,7 +8,7 @@ test.describe('Tests with isolated browser contexts', () => {
     }
   });
 
-  test('Searching career opportunities', async ({ mainPage, utilityFunctions }) => {
+  test('Searching for career opportunities', async ({ mainPage, utilityFunctions, careersPage }) => {
     // Navigate to the base URL defined in the config file
     await utilityFunctions.goto();
     // Interact with the page to accept all cookies, ensuring compliance with privacy regulations
@@ -21,5 +21,18 @@ test.describe('Tests with isolated browser contexts', () => {
     await utilityFunctions.verifyElement(mainPage.subMenuTitleFromCareers, 'elementContainsText', 'Work with us')
     // Select the button to search for careers.
     await utilityFunctions.selectElement(mainPage.searchCareersButton)
+
+    // Verify that the you are redirected on the Careers page
+    await utilityFunctions.verifyElement(careersPage.title, 'toBeVisible')
+    await utilityFunctions.verifyElement(careersPage.title, 'elementContainsText', 'Careers')
+
+    // Fill in the search input 
+    await utilityFunctions.selectElement(careersPage.searchButton)
+    await utilityFunctions.fillInputField(careersPage.searchButton,'QA Engineer')
+    await careersPage.selectRandomOptionFromDropdown()
+
+    await utilityFunctions.selectElement(careersPage.jobTeamsDropDown)
+
+
   });
 })

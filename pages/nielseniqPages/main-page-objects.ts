@@ -1,4 +1,4 @@
-import { expect, type Locator, type Page } from '@playwright/test';
+import { type Locator, type Page } from '@playwright/test';
 
 export class MainPage {
   readonly page: Page;
@@ -16,6 +16,4 @@ export class MainPage {
     this.subMenuTitleFromCareers = page.locator('role=link[name="Work with us"]')
     this.subMenuIsActive = page.locator('ul li[class*="sub-active"]')
   }
-
-
 }

@@ -26,7 +26,7 @@ export class UtilityFunctions {
         if (await element.isVisible() && await element.isEnabled()) {
             await element.click();
         } else {
-            throw new Error('Element is not visible or not enabled')
+            throw new Error(`Element ${element} is not visible or not enabled`)
         }
     }
 
@@ -55,14 +55,26 @@ export class UtilityFunctions {
     }
 
     /**
-* Hovers over the given menu element.
-* @param element The locator of the menu element to hover over.
-*/
+    * Hovers over the given menu element.
+    * @param element The locator of the menu element to hover over.
+    */
     async hoverOver(element: Locator) {
         if (await element.isVisible() && await element.isEnabled()) {
             await element.hover();
         } else {
             throw new Error('Element is not visible or not enabled')
         }
+    }
+
+    async fillInputField(element: Locator, text: string) {
+        if (await element.isVisible() && await element.isEnabled()) {
+            await element.fill(text);
+        } else {
+            throw new Error('Element is not visible and cannot be fill')
+        }
+    }
+
+    async selectOnPageBackground(){
+        await this.page.mouse.click(10, 10);
     }
 }

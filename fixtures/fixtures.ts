@@ -1,8 +1,9 @@
 import { test as base } from '@playwright/test';
 import { PlaywrightPage } from '../pages/playwrightExample/playwright-dev-page';
 import { SettingsPage } from '../pages/playwrightExample/settings-page';
-import { MainPage } from '../pages/nielseniqPages/main-page';
+import { MainPage } from '../pages/nielseniqPages/main-page-objects';
 import { UtilityFunctions } from '../helpers/utility-functions';
+import { CareersPage } from '../pages/nielseniqPages/careers-page-objects';
 
 // Define custom fixture types for the test context.
 type MyFixtures = {
@@ -10,6 +11,7 @@ type MyFixtures = {
     settingsPage: SettingsPage;
     mainPage: MainPage;
     utilityFunctions: UtilityFunctions;
+    careersPage: CareersPage;
 }
 
 // Extend base test by providing "playwrightPage" and "settingsPage"
@@ -34,6 +36,11 @@ export const test = base.extend<MyFixtures>({
     utilityFunctions: async ({ page }, use) => {
         // Instantiate GenericPage with the current page context and pass it to the test.
         await use(new UtilityFunctions(page));
+    },
+
+    careersPage: async ({ page }, use) => {
+        // Instantiate CareersPage with the current page context and pass it to the test.
+        await use(new CareersPage(page));
     },
 })
 
